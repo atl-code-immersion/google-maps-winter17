@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @destination.city %>, <%= @destination.country %>
+</p>
+
+<p>
+  <strong>Coordinates:</strong>
+  <%= @destination.latitude %>, <%= @destination.longitude %>
+</p>
+
+<div id="destination-map"></div>
+
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<%= link_to 'Back', destinations_path %>
+
+
+<%= javascript_tag do %>
+	var latitude = '<%= j @destination.latitude.to_s %>';
+	var longitude = '<%= j @destination.longitude.to_s %>';
+	address = "<%= j @destination.address %>";
+<% end %>
